@@ -21,21 +21,7 @@ class ReceiptItem #individual products
       self.quantity = quantity
       self.price = price
    def get_total(self):
-      return self.quantity * self.price
-
-class Receipt
-   def __init__ (self, tax_rate):
-      self.tax_rate = tax_rate
-      self.items = [] #emptylist
-   def add_item(self, item):
-      self.items.append(item) # add each item that to made list above
-   def get_subtotal(self):
-      return sum(item.get_total() for item in self.items) #referencing get_total in receipt item class for every item added to list reference receipt items and add total
-   def get_total(self):
-      return self.get_total() * (1 +self.tax_rate)   #one is to keep the cost and tax rate was defined in init above
-
-
-
+      return f"{self.quantity} * {self.price}"
 
 """
 Write a class that meets these requirements.
@@ -51,23 +37,19 @@ Behavior:
    * get_total()      # Multiplies the subtotal by the 1 + tax rate
 
 """
-
+class Receipt(ReceiptItem):
+   def __init__ (self, tax_rate):
+      self.tax_rate = tax_rate
+      self.items = [] #emptylist
+   def add_item(self, item):
+      self.items.append(item) # add each item that to made list above
+   def get_subtotal(self):
+      return sum(super().get_total() for item in self.items) #referencing get_total in receipt item class for every item added to list reference receipt items and add total
+   def get_total(self):
+      return self.get_total() * (1 + self.tax_rate)   #one is to keep the cost and tax rate was defined in init above
 """
-Write a class that meets these requirements.
 
-Name:       ReceiptItem
 
-Required state:
-   * quantity, the amount of the item bought
-   * price, the amount each one of the things cost
-
-Behavior:
-   * get_total()          # Returns the quantity * price
-
-Example:
-   item = ReceiptItem(10, 3.45)
-
-   print(item.get_total())    # Prints 34.5
 
 
 
