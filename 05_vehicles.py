@@ -18,6 +18,13 @@ print(motorcycle.get_info())  # Prints motorcycle information
 
 Once your classes are complete, copy and paste the above example below them in order to test their functionality.
 """
+class Vehicle:
+      def __init__ (self, make, model, year):
+            self.make = make
+            self.model = model
+            self.year = year
+      def get_info(self):
+            return f"Make: {self.make}, Model: {self.model}, Year: {self.year}"
 
 """
 Write a class that meets these requirements.
@@ -33,6 +40,12 @@ Behavior:
    * get_info()     # Returns information about the vehicle
 
 """
+class Car(Vehicle):
+      def __init__(self, make, model, year, doors)
+            super().__init__(make, model, year)
+            self.doors = doors
+      def get_info(self):
+            return f"{super().get_info}, Doors = {self.door}"
 
 """
 Write a class that meets these requirements.
@@ -51,6 +64,12 @@ Example:
    print(car.get_info())    # Prints car information
 
 """
+class Truck(Vehicle):
+      def __init__(self, make, model, year, towing_capacity):
+            super().__init__(make, model, year):
+            self.towing = towing_capacity
+      def get_info(self):
+            return f"{super().get_info}, Towing Capacity: {self.towing}"
 
 """
 Write a class that meets these requirements.
@@ -69,7 +88,12 @@ Example:
    print(truck.get_info())    # Prints truck information
 
 """
-
+class Motorcycle(Vehicle):
+      def __init__ (self, make, model, year, type):
+            super().__init__(make, model, year):
+            self.type = type
+      def get_info(self):
+            return f"{super().get_info}, Type: {self.type}"
 """
 Write a class that meets these requirements.
 

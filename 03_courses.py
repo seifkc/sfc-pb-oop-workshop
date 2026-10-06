@@ -17,6 +17,26 @@ print(course.get_total_students())  # Prints 2
 Once your classes are complete, copy and paste the above example below them in order to test their functionality.
 """
 
+class Student:
+   def __init__(self, name, grade):
+      self.name = name
+      self.grade = grade
+
+class Course:
+      def __init__(self, course_name)
+      self.course_name = course_name
+      self.roster = []
+      def add_student(self, Student):
+         self.roster.append(Student)
+      def get_average_grade(self):
+          if not self.roster:
+              return 0
+          total_grade = sum(student.grade for student in self.roster)
+          return total_grade / len(self.roster)
+
+      def get_total_students(self):
+          return len(self.roster)
+
 """
 Write a class that meets these requirements.
 
