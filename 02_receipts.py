@@ -16,6 +16,26 @@ print(receipt.get_total())        # Prints 22
 Once your classes are complete, copy and paste the above example below them in order to test their functionality
 """
 
+class ReceiptItem #individual products
+   def __init__ (self, quantity, price):
+      self.quantity = quantity
+      self.price = price
+   def get_total(self):
+      return self.quantity * self.price
+
+class Receipt
+   def __init__ (self, tax_rate):
+      self.tax_rate = tax_rate
+      self.items = [] #emptylist
+   def add_item(self, item):
+      self.items.append(item) # add each item that to made list above
+   def get_subtotal(self):
+      return sum(item.get_total() for item in self.items) #referencing get_total in receipt item class for every item added to list reference receipt items and add total
+   def get_total(self):
+      return self.get_total() * (1 +self.tax_rate)   #one is to keep the cost and tax rate was defined in init above
+
+
+
 
 """
 Write a class that meets these requirements.
@@ -49,4 +69,7 @@ Example:
 
    print(item.get_total())    # Prints 34.5
 
-"""
+
+
+
+

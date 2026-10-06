@@ -25,19 +25,31 @@ print(account.check_balance())  # Prints 20
 Once your classes are complete, copy and paste the above example below them in order to test their functionality
 """
 
+class BankAccount:
+    def __init__(self, beginning_balance):
+        self.balance = beginning_balance
 
+    def check_balance(self):
+        return self.balance
 
-"""
-Write a class that meets these requirements.
+    def deposit(self, amount):
+        self.balance += amount
 
-Name:       BankAccount
+    def withdraw(self, amount):
+        if amount > self.balance:
+            print("Insufficient funds")
+        else:
+            self.balance -= amount
 
-Required state:
-   * balance
+account = BankAccount(100)
+account.deposit(50)
+print(account.check_balance())  # Prints 150
 
-Behavior:
-   * check_balance()      # returns the current balance
-   * deposit(amount)      # adds the new amount to the balance
-   * withdraw(amount)     # removes the amount from the balance, but does not allow the balance to go negative
+account.withdraw(30)
+print(account.check_balance())  # Prints 120
 
-"""
+account.withdraw(100)
+print(account.check_balance())  # Prints 20
+
+account.withdraw(50)  # Prints "Insufficient funds"
+print(account.check_balance())  # Prints 20
